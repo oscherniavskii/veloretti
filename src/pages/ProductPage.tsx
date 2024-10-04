@@ -297,16 +297,21 @@ const ProductPage: FC = () => {
 
 			{isOpenModal &&
 				content?.title &&
-				createPortal(
-					content.product_form.id && (
-						<ProductModal
-							productName={content?.title}
-							closeModal={closeModal}
-							formContent={content.product_form}
-						/>
-					),
-					document.getElementById('modal-container')!
-				)}
+				content.product_form.id &&
+				(() => {
+					const modalContainer = document.getElementById('modal-container');
+					if (modalContainer) {
+						return createPortal(
+							<ProductModal
+								productName={content?.title}
+								closeModal={closeModal}
+								formContent={content.product_form}
+							/>,
+							modalContainer
+						);
+					}
+					return null;
+				})()}
 		</>
 	);
 };

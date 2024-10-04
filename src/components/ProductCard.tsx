@@ -114,16 +114,21 @@ const ProductCard: FC<ProductCardProps> = ({
 
 			{isOpenModal &&
 				product?.title &&
-				createPortal(
-					formData && (
-						<ProductModal
-							productName={product?.title}
-							closeModal={closeModal}
-							formContent={formData}
-						/>
-					),
-					document.getElementById('modal-container')!
-				)}
+				formData &&
+				(() => {
+					const modalContainer = document.getElementById('modal-container');
+					if (modalContainer) {
+						return createPortal(
+							<ProductModal
+								productName={product?.title}
+								closeModal={closeModal}
+								formContent={formData}
+							/>,
+							modalContainer
+						);
+					}
+					return null;
+				})()}
 		</article>
 	);
 };
