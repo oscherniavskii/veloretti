@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-container {
+	@apply max-w-[1330px] px-3 mx-auto w-full;
+}
+
+.map iframe {
+	@apply w-full h-full;
+}
+
+.header-menu > ul,
+.header-menu.loader {
+	@apply flex flex-col md:flex-row gap-4 md:gap-5 pb-6 md:pb-0 text-sm;
+}
+
+.header-menu ul li a {
+	@apply font-semibold text-black-text border-black-text border-b-2 border-opacity-0 md:hover:border-opacity-50 md:hover:text-opacity-70 transition-all duration-200 uppercase;
+}
+
+.header-menu ul li span {
+	@apply font-semibold text-black-text cursor-pointer uppercase;
+}
+
+.header-menu ul li.current-menu-item > a {
+	@apply border-b-2 border-black-text md:hover:border-opacity-50;
+}
+
+.header-menu ul li.menu-item-has-children {
+	@apply flex items-start md:items-center gap-1 relative;
+}
+
+.header-menu ul li.menu-item-has-children svg {
+	@apply cursor-pointer transition-all duration-300 mt-2 md:mt-0;
+}
+
+.header-menu ul li.menu-item-has-children ul {
+	@apply static md:absolute -left-4 top-[100%] min-w-max px-0 md:px-4 pt-4 md:py-2 md:bg-white md:shadow-lg md:translate-y-7 md:opacity-0 md:pointer-events-none transition-all duration-300;
+}
+
+.header-menu ul li.menu-item-has-children ul li {
+	@apply mb-3 last:mb-0 md:mb-1;
+}
+
+.header-menu ul li.menu-item-has-children:hover > ul {
+	@apply opacity-100 translate-y-0 pointer-events-auto;
+}
+
+.header-menu ul li.menu-item-has-children:hover > svg {
+	@apply md:rotate-180;
+}
+
+.header-menu ul li.menu-item-has-children ul li.menu-item-has-children {
+	@apply block;
+}
+
+.header-menu ul li.menu-item-has-children ul li.menu-item-has-children svg {
+	@apply inline-block ml-1 mb-[2px];
+}
+
+.header-menu
+	ul
+	li.menu-item-has-children
+	ul
+	li.menu-item-has-children:hover
+	svg {
+	@apply rotate-0;
+}
+
+.header-menu ul li.menu-item-has-children ul li.menu-item-has-children ul {
+	@apply pl-4 static top-auto left-auto opacity-100 translate-y-0 pointer-events-auto shadow-none p-1;
+}
+
+.footer-menu ul li {
+	@apply mb-1 last:mb-0;
+}
+
+.footer-menu ul li a {
+	@apply text-sm text-white text-opacity-60 font-semibold hover:text-white-title transition-all duration-300;
+}
+
+.footer-menu.loader {
+	@apply flex flex-col gap-y-2;
+}
+
+.swiper-button-disabled {
+	@apply opacity-20;
+}
